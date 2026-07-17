@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #060B14;
+  --color-foreground: #FFFFFF;
+  --color-card: #0B1324;
+  --color-card-foreground: #FFFFFF;
+  --color-primary: #2D8CFF;
+  --color-primary-foreground: #FFFFFF;
+  --color-secondary: #7FD3FF;
+  --color-secondary-foreground: #FFFFFF;
+  --color-muted: #12203A;
+  --color-muted-foreground: rgba(127, 211, 255, 0.6);
+  --color-accent: #4FA8FF;
+  --color-accent-foreground: #FFFFFF;
+  --color-destructive: #FF453A;
+  --color-destructive-foreground: #FFFFFF;
+  --color-border: #17345F;
+  --color-input: #12203A;
+  --color-ring: #2D8CFF;
+  --color-primary-glow: rgba(45, 140, 255, 0.35);
+  --color-card-bg: rgba(45, 140, 255, 0.08);
+  --color-card-border: rgba(127, 211, 255, 0.1);
+  --color-card-border-hover: rgba(127, 211, 255, 0.2);
+  --color-ios-blue: #2D8CFF;
+  --color-ios-cyan: #7FD3FF;
+  --color-ios-green: #30D158;
+  --color-ios-indigo: #4FA8FF;
+  --color-ios-gray: #8E8E93;
+  --color-ios-gray2: #636366;
+  --color-ios-gray3: #17345F;
+  --color-ios-gray4: #12203A;
+  --color-ios-gray5: #0B1324;
+  --color-ios-gray6: #060B14;
+  --color-shadow: #02050A;
+  --radius-sm: calc(0.625rem - 4px);
+  --radius-md: calc(0.625rem - 2px);
+  --radius-lg: 0.625rem;
+  --radius-xl: calc(0.625rem + 4px);
+  --font-sans: system-ui, -apple-system, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
+
+  /* Glass tokens */
+  --glass-bg: rgba(6,11,20,0.5);
+  --glass-bg-light: rgba(18,32,58,0.3);
+  --glass-bg-strong: rgba(6,11,20,0.6);
+  --glass-border: rgba(127,211,255,0.08);
+  --glass-border-strong: rgba(127,211,255,0.12);
+  --glass-blur: blur(20px) saturate(1.8);
+  --glass-blur-strong: blur(24px) saturate(1.8);
+  --glass-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  --glass-shadow-strong: 0 8px 32px rgba(0,0,0,0.4);
+  --glass-inset: inset 0 1px 0 rgba(127,211,255,0.06);
+  --glass-inset-strong: inset 0 1px 0 rgba(127,211,255,0.08);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-background);
+  background-attachment: fixed;
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Glass utility class — with blur (Navbar only) */
+.glass {
+  background: linear-gradient(135deg, var(--glass-bg) 0%, var(--glass-bg-light) 50%, var(--glass-bg) 100%);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), var(--glass-inset);
+}
+
+.glass-strong {
+  background: linear-gradient(135deg, var(--glass-bg-strong) 0%, var(--glass-bg-light) 50%, var(--glass-bg-strong) 100%);
+  backdrop-filter: var(--glass-blur-strong);
+  -webkit-backdrop-filter: var(--glass-blur-strong);
+  border: 1px solid var(--glass-border-strong);
+  box-shadow: var(--glass-shadow-strong), var(--glass-inset-strong);
+}
+
+/* Glass card — NO blur, fast rendering (for cards, footer, CTA) */
+.glass-card {
+  background: linear-gradient(135deg, var(--glass-bg) 0%, var(--glass-bg-light) 50%, var(--glass-bg) 100%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), var(--glass-inset);
+}
+
+.glass-card-strong {
+  background: linear-gradient(135deg, var(--glass-bg-strong) 0%, var(--glass-bg-light) 50%, var(--glass-bg-strong) 100%);
+  border: 1px solid var(--glass-border-strong);
+  box-shadow: var(--glass-shadow-strong), var(--glass-inset-strong);
+}
+
+@keyframes floatA {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(20px, -30px) rotate(8deg); }
+}
+@keyframes floatB {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(-15px, 25px) rotate(-6deg); }
+}
+@keyframes floatC {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(12px, -18px) rotate(5deg); }
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+/* Performance: reduce animations on low-end / mobile */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .glass, .glass-strong {
+    backdrop-filter: blur(12px) saturate(1.4);
+    -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  }
+}
+
+@media (max-width: 480px) {
+  .glass, .glass-strong {
+    backdrop-filter: blur(8px) saturate(1.2);
+    -webkit-backdrop-filter: blur(8px) saturate(1.2);
+  }
+}
