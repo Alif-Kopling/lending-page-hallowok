@@ -70,10 +70,10 @@ export default function Hero() {
   }, [])
 
   const gridProps = useMemo(() => ({
-    grid: isLowEnd ? 5 : 10,
-    mouse: 0.1,
-    strength: isLowEnd ? 0.08 : 0.15,
-    relaxation: 0.9,
+    grid: isLowEnd ? 5 : 12,
+    mouse: 0.15,
+    strength: isLowEnd ? 0.08 : 0.18,
+    relaxation: 0.82,
   }), [isLowEnd])
 
   const fuzzyProps = useMemo(() => ({
