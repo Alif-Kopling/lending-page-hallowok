@@ -8,8 +8,8 @@ const steps = [
   {
     num: '01',
     icon: Download,
-    title: 'Download App',
-    desc: 'Tersedia di iOS, Android, dan web. Gratis, tanpa ribet.',
+    title: 'Download APK',
+    desc: 'Pakai Android? Download APK-nya langsung. Windows atau Mac? Buka lewat web resmi — gratis, tanpa ribet.',
   },
   {
     num: '02',
